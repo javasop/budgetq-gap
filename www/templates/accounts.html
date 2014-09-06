@@ -1,0 +1,43 @@
+<ion-view title="Accounts">
+    <ion-header-bar class="bar-positive">
+        <div class="buttons">
+
+            <h1 class="title"> Select An Account  </h1>
+
+
+        </div>
+    </ion-header-bar>
+
+    <ion-content>
+        <ion-list  show-delete="data.showDelete" canSwipeItems="true">
+            <div class="card">
+                    <ion-item   ng-repeat="email in emails" 
+                               item="item"
+                               href="#/tab/dash/{{email.email}}" >
+
+<!--                        <i class="icon {{item.icon}}"></i>-->
+                        <p>
+                            {{email.email}}
+                        </p>
+                        <ion-delete-button class="ion-minus-circled" 
+                                           ng-click="onItemDelete(item)">
+                        </ion-delete-button>
+                        <ion-option-button class="button-assertive"
+                                           ng-click="edit(item)">
+                            Edit
+                        </ion-option-button>
+                        <!--          <ion-option-button class="button-calm"
+                                                     ng-click="share(item)">
+                                    Share
+                                  </ion-option-button>-->
+                        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+                    </ion-item>
+            </div>
+
+        </ion-list>
+
+    </ion-content>
+
+
+
+</ion-view>

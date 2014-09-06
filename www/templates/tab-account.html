@@ -1,0 +1,45 @@
+<ion-view title="Settings">
+        <ion-header-bar class="bar-positive">
+        <div class="buttons">
+
+            <h1 class="title">Settings</h1>
+
+
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header padding">
+        <div class="list">
+            
+            //set when you want to be reminded of what you spent during the day
+
+            <ion-item class="item-icon-left" item="item">
+                <i class="icon ion-social-usd" style="color:green"></i>
+                <p style="float:left"><b>Monthly income</b></p>
+                <label style="float:right;text-align: right;padding:0"  class="item item-input col-20">
+                    <input  type="number"  ng-model="settings.monthlyIncome" name="monthly" placeholder="0" required>
+                </label>
+            </ion-item>
+
+            <ion-item class="item-icon-left" item="item">
+                <i class="icon ion-refresh" style="color:green"></i>
+                <p style="float:left"><b>Cycle</b></p>
+                <label style="float:right;text-align: right;padding:0"  class="item item-input col-20">
+                    <input  type="number"  ng-model="settings.days" name="monthly" placeholder="0" required>
+                </label>
+            </ion-item>
+
+            <ion-item  ng-repeat="selection in sel" class="item-icon-left" item="item">
+                <i class="icon {{selection.icon}}" style="color:green"></i>
+                <label class="item-input item-select">
+                    <div class="input-label">
+                        {{selection.name}}
+                    </div>
+                    <select>
+                        <option ng-repeat="list in selection.ls">{{list}}</option>
+                    </select>
+                </label>
+            </ion-item>
+
+        </div>
+    </ion-content>
+</ion-view>

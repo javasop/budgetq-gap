@@ -1,0 +1,46 @@
+<ion-view title="Accounts">
+    <ion-header-bar class="bar-royal">
+        <div class="buttons">
+            <h1 class="title">Login </h1>
+        </div>
+    </ion-header-bar>
+
+    <ion-content>
+        <ion-list>
+
+      <form novalidate="novalidate" on-valid-submit="submit()">
+    <div class="list card">
+      <label class="item item-input validated">
+        <span class="input-label">Username</span>
+        <input type="email" ng-model="model.username" required="required" name="username">
+        <i class="icon ion-alert-circled error"></i>
+      </label>
+      
+            <label class="item item-input validated">
+        <span class="input-label">Password</span>
+  <input type="password" ng-model="model.password" required="required" name="password">        <i class="icon ion-alert-circled error"></i>
+      </label>
+    
+
+<!--
+      <label class="item item-input validated">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="user.password" name="password" required="required">
+        <i class="icon ion-alert-circled error"></i>
+      </label>
+-->
+    </div>
+    <div class="padding">
+      <button type="submit" class="button icon-right ion-chevron-right button-block button-dark">
+        Login
+      </button>
+    </div>
+    </form>
+
+        </ion-list>
+
+    </ion-content>
+
+
+
+</ion-view>

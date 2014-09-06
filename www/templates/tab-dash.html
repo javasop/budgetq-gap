@@ -1,0 +1,180 @@
+<ion-view  title="Dashboard">
+    <ion-header-bar  class="bar-royal">
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios7-minus-outline" 
+                    ng-click="data.showDelete = !data.showDelete;
+                        data.showReorder = false"></button>
+
+            <!--go back one month --> <h1  class="title header-text"> <i ng-click="prevMonth()" class="icon ion-chevron-left header-text"  ></i> {{numberMonth}}<span>/</span>{{numberYear}} <i ng-click="nextMonth()"  class="icon ion-chevron-right header-text "></i></h1>
+            <button class="button button-icon icon ion-ios7-plus-outline" 
+                    ng-click="edit()"></button>
+
+            <!--      <button class="button"
+                      ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
+                        Reorder
+                      </button>-->
+
+        </div>
+    </ion-header-bar>
+    <ion-content>    
+        <ion-list  show-delete="data.showDelete" canSwipeItems="true">
+            <div class="card">
+                <div ng-repeat="(type,list) in groups">
+                    <div class="item item-divider">
+                        {{type}} Expenses
+                    </div>
+
+                    <ion-item  class="item-icon-left item-icon-right" ng-repeat="item in list" 
+                               item="item"
+                               ng-dblclick="edit(item)">
+
+                        <i class="icon {{item.icon}}"></i>
+
+                        <p  style="float: right">
+                            {{item.value}}
+
+
+                        </p>
+                        <p style="float: left">
+                            {{ item.name}}
+                        </p>
+
+
+                        <ion-delete-button class="ion-minus-circled" 
+                                           ng-click="onItemDelete(item)">
+                        </ion-delete-button>
+                        <ion-option-button class="button-assertive"
+                                           ng-click="edit(item)">
+                            Edit
+                        </ion-option-button>
+
+                        <i ng-click="edit(item)" class="icon ion-ios7-compose"></i>
+                        <!--          <ion-option-button class="button-calm"
+                                                     ng-click="share(item)">
+                                    Share
+                                  </ion-option-button>-->
+                        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+                    </ion-item>
+                </div>
+
+                <div>
+                    <div class="item item-divider">
+                        Budget
+                    </div>
+
+                    <ion-item  class="item-icon-left item-icon-right" 
+                               ng-dblclick="edit(model.budget)">
+
+                        <i class="icon {{model.budget.icon}}"></i>
+
+                        <p  style="float: right">
+                            {{model.budget.value}}
+
+
+                        </p>
+                        <p style="float: left">
+                            {{ model.budget.name}}
+                        </p>
+
+                        <ion-option-button class="button-assertive"
+                                           ng-click="edit(model.budget)">
+                            Edit
+                        </ion-option-button>
+
+                        <i ng-click="edit(model.budget)" class="icon ion-ios7-compose"></i>
+           
+                    </ion-item>
+                </div>
+
+            </div>
+
+        </ion-list>
+
+
+        <ion-item class="item-icon-left" item="item" href="#">
+            <i class="icon ion-social-usd" style="color:green"></i>
+            <p style="float:left"><b>Total expenses</b></p>
+            <p  style="float:right"><b>{{model.expTotal}}</b></p>
+        </ion-item>
+
+
+        <ion-item class="item-icon-left" item="item" href="#">
+            <i class="icon ion-social-usd" style="color:green"></i>
+            <p style="float:left"><b>Amount Left</b></p>
+            <p  style="float:right"><b>{{model.amountLeft}}</b></p>
+        </ion-item>
+
+        <ion-item class="item-icon-left" item="item" href="#">
+            <i class="icon ion-social-usd" style="color:green"></i>
+            <p style="float:left"><b>budget per day</b></p>
+            <p  style="float:right"><b>{{model.perDay}}</b></p>
+        </ion-item>
+
+    </ion-content>
+
+
+    <!-- Modal -->   
+    <script id="my-modal.html" type="text/ng-template">
+        <div class="modal">
+        <ion-header-bar>   
+        <h1 class="title">{{operation}}</h1>
+        <button class="button button-icon icon ion-close-round" 
+        ng-click="closeModal()"></button>
+        </ion-header-bar>
+        <form>
+        <ion-content>
+        <div class="list">
+        <label class="item item-input">
+        <input type="text"  ng-model="item.name" placeholder="Expense Name" required>
+        </label>
+        <label class="item item-input">
+        <input type="number"  ng-model="item.value" name="hello" placeholder="Amount" required>
+        </label>
+        <label class="item-input item-select">
+        <div class="input-label">
+        select an icon
+        </div>
+        <button ng-click="openIconsModal()" class="button button-block button-dark"><i class=
+        "icon {{item.icon}}"></i></button>
+        </label>
+        </label>
+        <label class="item-input item-select">
+        <div class="input-label">
+        select a type 
+        </div>
+        <select ng-model="item.type">
+        <option>Fixed</option>
+        <option>Fluctuating</option>
+        </select>
+        </label>
+
+
+        <button ng-click="submit()" type="submit" class="button button-block button-dark">Submit</button>
+
+        </div>
+        </ion-content>
+        </form>
+        </div>
+    </script>
+
+
+    <script id="icons-modal.html" type="text/ng-template">
+        <div class="modal">
+        <ion-header-bar>   
+        <h1 class="title">Select an icon</h1>
+        <button class="button button-icon icon ion-close-round" 
+        ng-click="closeIconsModal()"></button>
+        </ion-header-bar>
+        <form  >
+        <ion-content>
+        <div class="list card">
+        <div ng-repeat="i in icons" style="font-size:90px" class="item item-image">
+        <i ng-click="doSelectIcon(i,item)" class="icon {{i}}"></i>
+        </div>
+        </div>
+        </ion-content>
+        </form>
+        </div>
+    </script>
+
+</ion-view>
