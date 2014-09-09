@@ -16,7 +16,7 @@
 
         </div>
     </ion-header-bar>
-    <ion-content contenth height="200" class="content-scroll">    
+    <ion-content contenth height="150" class="content-scroll">    
         <ion-list  show-delete="data.showDelete" canSwipeItems="true">
             <div class="card">
                 <div class="item item-divider">
@@ -148,9 +148,9 @@
 
 
     </ion-content>
-    <ion-footer-bar style="height:100px" class="bar-stable">
-        <button style="margin-top:50px;margin-bottom:50px" class="button  button-assertive col col-50">Expenses: {{model.expTotal}} $</button>
-        <button style="margin-top:50px;margin-bottom:50px" class="button  button-balanced col col-50">Available: {{model.amountLeft}} $</button>
+    <ion-footer-bar style="height:80px" class="bar-stable">
+        <button style="margin-top:35px;margin-bottom:50px" class="button  button-assertive col col-50">Expenses: {{model.expTotal}} $</button>
+        <button style="margin-top:35px;margin-bottom:50px" class="button  button-balanced col col-50">Available: {{model.amountLeft}} $</button>
         <button style="height:0px;" class="button button-positive col">Daily Allowance: {{model.perDay|number:2}} $</button>
     </ion-footer-bar>
     <!-- Modal -->   
