@@ -1,5 +1,5 @@
 var local = "http://localhost:5000/";
-var heroku = "http://budgetq.herokuapp.com/collections/";
+var heroku = "http://budgetq.herokuapp.com/";
 angular.module('starter.services', ['ngResource'])
 
         /**
@@ -52,12 +52,12 @@ angular.module('starter.services', ['ngResource'])
                         count++
  
                     }
-                var url = local + service+ s;
+                var url = heroku + service+ s;
 
                 }
                 else{
                     
-                 var url = local+service;
+                 var url = heroku+service;
                     
                 }
                 return url;
