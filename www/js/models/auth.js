@@ -23,7 +23,7 @@ angular.module('starter.services')
                         else {
                             $location.path("/tab/dash/" + accounts[0].exp_id);
                         }
-                    },
+                    }).error(
                             function(e) {
 
                                 $ionicLoading.hide();
