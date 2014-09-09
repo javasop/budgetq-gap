@@ -29,6 +29,8 @@ angular.module('starter.services', ['ngResource'])
 
             $rootScope.model = {
                 expTotal: 0,
+                recTotal:0,
+                flucTotal:0,
                 monthlyIncome: 1847,
                 amountLeft: 0,
                 perDay: 0,

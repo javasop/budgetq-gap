@@ -1,0 +1,53 @@
+form i.icon.error {
+  color: #ef4e3a; }
+
+form input + i.icon.error {
+  display: none;
+  margin-left: 8px; }
+
+form.ng-submitted input.ng-invalid + i.icon.error {
+  display: block; }
+
+form .has-error {
+  border-left: 5px solid #cc2511; }
+
+form .has-success {
+  border-left: 5px solid #3d8b3d; }
+
+form.ng-submitted input.ng-valid + i.icon.error {
+  display: none; }
+
+.header-text{
+font-size:28px!important;
+padding:0px 5px 0px 5px;
+}
+  .button.button-balanced {
+    border-color: #2a5215;
+    background-color: #3f7b1f;
+    color: #fff; }
+    .button.button-balanced:hover {
+      color: #fff;
+      text-decoration: none; }
+    .button.button-balanced.active, .button.button-balanced.activated {
+      border-color: #498f24;
+      background-color: #498f24;
+      box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
+    .button.button-balanced.button-clear {
+      border-color: transparent;
+      background: none;
+      box-shadow: none;
+      color: #66cc33; }
+    .button.button-balanced.button-icon {
+      border-color: transparent;
+      background: none; }
+    .button.button-balanced.button-outline {
+      border-color: #66cc33;
+      background: transparent;
+      color: #66cc33; }
+      .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated {
+        background-color: #66cc33;
+        box-shadow: none;
+        color: #fff; }
+ /** button color : #2A668D , border: black **/
+  /** bar color : #3F8C99, border: black  **/
+

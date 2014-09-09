@@ -67,7 +67,7 @@ angular.module('starter.controllers', [])
                     $rootScope.operation = "Insert"
                     $scope.insert = true;
 		    $rootScope.item = {};
-		    $rootScope.item.type = "Fixed";
+		    $rootScope.item.type = "recurring";
 		    $rootScope.item.icon = "ion-help-circled";
                 }
                 else {
