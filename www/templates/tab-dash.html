@@ -1,20 +1,13 @@
 <ion-view  title="Dashboard">
     <ion-header-bar  class="bar-positive">
-        <div class="buttons">
             <button class="button button-icon icon ion-ios7-minus-outline" 
                     ng-click="data.showDelete = !data.showDelete;
                         data.showReorder = false"></button>
 
-            <!--go back one month --> <h1  class="title"> <i ng-click="prevMonth()" class="icon ion-chevron-left"  ></i> {{numberMonth}}<span>/</span>{{numberYear}} <i ng-click="nextMonth()"  class="icon ion-chevron-right"></i></h1>
+         <h1  class="title"> <i ng-click="prevMonth()" class="icon ion-chevron-left"  ></i> {{numberMonth}}<span>/</span>{{numberYear}} <i ng-click="nextMonth()"  class="icon ion-chevron-right"></i></h1>
             <button class="button button-icon icon ion-ios7-plus" 
                     ng-click="edit()"></button>
 
-            <!--      <button class="button"
-                      ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
-                        Reorder
-                      </button>-->
-
-        </div>
     </ion-header-bar>
     <ion-content contenth height="220" class="content-scroll">    
         <ion-list  show-delete="data.showDelete" canSwipeItems="true">
