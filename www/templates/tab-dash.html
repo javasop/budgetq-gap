@@ -5,7 +5,7 @@
                     ng-click="data.showDelete = !data.showDelete;
                         data.showReorder = false"></button>
 
-            <!--go back one month --> <h1  class="title header-text"> {{numberMonth}}<span>/</span>{{numberYear}}</h1>
+            <!--go back one month --> <h1  class="title"> <i ng-click="prevMonth()" class="icon ion-chevron-left"  ></i> {{numberMonth}}<span>/</span>{{numberYear}} <i ng-click="nextMonth()"  class="icon ion-chevron-right"></i></h1>
             <button class="button button-icon icon ion-ios7-plus" 
                     ng-click="edit()"></button>
 
@@ -149,8 +149,8 @@
 
     </ion-content>
     <ion-footer-bar style="height:150px" class="bar-stable">
-        <button style="margin-top:50px;margin-bottom:50px" class="button  button-assertive col col-20">Expenses: {{model.expTotal}} $</button>
-        <button style="margin-top:50px;margin-bottom:50px" class="button  button-balanced col col-80">Available: {{model.amountLeft}} $</button>
+        <button style="margin-top:50px;margin-bottom:50px" class="button  button-assertive col col-33">Expenses: {{model.expTotal}} $</button>
+        <button style="margin-top:50px;margin-bottom:50px" class="button  button-balanced col col-66">Available: {{model.amountLeft}} $</button>
         <button style="height:0px" class="button button-block button-positive">Daily Allowance: {{model.perDay|number:2}} $</button>
 
     </ion-footer-bar>
