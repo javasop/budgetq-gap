@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
             /**
              * Initializations: variables, http requests
              */
-    
+            
 	    $scope.prevMonth = function(){
 	        //returns true if there's a prev month	
                 expenses.setMonth($rootScope.numberMonth + 1)

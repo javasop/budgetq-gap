@@ -1,4 +1,16 @@
 angular.module('starter.directives',[])
+
+.directive('contenth', function ($window) {
+
+    return {
+        restrict: 'A',
+        link: function (scope, elem, attrs) {
+            var setHeight = attrs.height ? attrs.height : 0;
+            var height = elem[0].offsetHeight;
+            elem.css('height', height-setHeight + 'px');
+        }
+    };
+})
 .directive('onValidSubmit', ['$parse', '$timeout', function($parse, $timeout) {
 
     return {
