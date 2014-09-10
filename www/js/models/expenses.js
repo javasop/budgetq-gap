@@ -160,7 +160,8 @@ angular.module('starter.services')
                 edit: function(item) {
                     //the state params has the id?
                     var ex;
-                    var ls = $rootScope.model[item.type];
+                    //fix item index here
+                    var ls = $rootScope.expenses;
                     index = ls.indexOf(item);
                     var q = prepareQ();
                     model.put("expenses", {updated: item, item_index: index}, q).success(function(a) {
