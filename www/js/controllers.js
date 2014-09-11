@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
         .controller('AccountsCtrl', function($scope) {
 
         })
-        .controller('DashCtrl', function($rootScope, $ionicModal, $ionicListDelegate, $ionicLoading, $timeout, $scope, $http, $ionicPlatform,$stateParams,expenses) {
+        .controller('DashCtrl', function($rootScope, $ionicModal,myModals, $ionicListDelegate, $ionicLoading, $timeout, $scope, $http, $ionicPlatform,$stateParams,expenses) {
 
 
             /**
@@ -30,10 +30,12 @@ angular.module('starter.controllers', [])
 		//returns true if there's a next month
    		expenses.setMonth($rootScope.numberMonth - 1)
 
-	}
+            }
 
 	    //get the current month, this will be changed if the user wants to go back a month let's say ...
             expenses.get();
+
+
 
             $scope.sync = function(item) {
                 //sync my data with the database
@@ -46,13 +48,14 @@ angular.module('starter.controllers', [])
                     expenses.edit(item);
                 }
             };
-            /**
-             * end init
-             */
+            
+            $scope.onItemDelete = function(item) {
+	    	//implement expenses delete ...
+		 expenses.del(item)	    
+		//send a request to delete an item to the server?
+            };
 
-
-
-
+           
             /** item list manupilation
              *
              */
@@ -75,100 +78,29 @@ angular.module('starter.controllers', [])
                     $scope.insert = false;
                     $rootScope.item = item;
                 }
-                $scope.openModal();
+                myModals.create($rootScope,"item",function(item){               
+                    $scope.sync(item);
+                });
+                
                 $ionicListDelegate.closeOptionButtons();
             };
 
-            $scope.onItemDelete = function(item) {
-	    	//implement expenses delete ...
-		 expenses.del(item)	    
-		//send a request to delete an item to the server?
-            };
 
-            /**
-             *end item list manipulation
-             */
-
-
-
-
-            /**
-             * 
-             * modals 
-             * 
-             */
-
-//add Modal
-            $ionicModal.fromTemplateUrl('my-modal.html', {
-                scope: $rootScope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $rootScope.modal = modal;
-            });
-            $scope.openModal = function() {
-                $rootScope.modal.show();
-            };
-            $rootScope.closeModal = function() {
-                $rootScope.modal.hide();
-            };
-	    $rootScope.submit = function(){
-                if(expenses.validate($scope.item)){
-		$rootScope.closeModal();
-		$scope.sync($scope.item);
-		}
-	    }
-            //Cleanup the modal when we're done with it!
-            $rootScope.$on('$destroy', function() {
-                $rootScope.modal.remove();
-            });
-            // Execute action on hide modal
-            $rootScope.$on('modal.hidden', function() {
-                // Execute action
-            });
-            // Execute action on remove modal
-            $rootScope.$on('modal.removed', function() {
-                // Execute action
-            });
-
-
-
-
-	    //icons modal
-	    $ionicModal.fromTemplateUrl('icons-modal.html', {
-                scope: $rootScope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $rootScope.iconsModal = modal;
-            });
-            $rootScope.openIconsModal = function() {
-                $rootScope.iconsModal.show();
-            };
-            $rootScope.closeIconsModal = function() {
-                $rootScope.iconsModal.hide();
-            };
-	    $rootScope.doSelectIcon= function(icon,item){
-		item.icon = icon;
-		$rootScope.closeIconsModal();
-		
-
-	    }	    
-            //Cleanup the modal when we're done with it!
-            $rootScope.$on('$destroy', function() {
-                $rootScope.iconsModal.remove();
-            });
-            // Execute action on hide modal
-            $rootScope.$on('iconsModal.hidden', function() {
-                // Execute action
-            });
-            // Execute action on remove modal
-            $rootScope.$on('iconsModal.removed', function() {
-                // Execute action
-            });
-
+        })
+        .controller('SettingsCtrl', function($rootScope) {
 
 
         })
-        .controller('SettingsCtrl', function($rootScope, $rootScope) {
-
+        .controller('itemModalCtrl', function($rootScope,myModals,$scope) {         
+            //open icons modal
+            $scope.openIcons = function(){
+                myModals.create($rootScope,"category",function(icon){
+                    $rootScope.item.icon = icon;
+                })
+            }
+        })
+        .controller('categoryModalCtrl', function($rootScope,myModals) {
+            
+            
         })
 

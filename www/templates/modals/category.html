@@ -1,0 +1,16 @@
+<div class="modal" ng-controller="categoryModalCtrl">
+    <ion-header-bar>   
+        <h1 class="title">Select an icon</h1>
+        <button class="button button-icon icon ion-close-round" 
+                ng-click="closeModal('category')"></button>
+    </ion-header-bar>
+    <form>
+        <ion-content>
+            <div class="list card">
+                <div ng-repeat="i in icons" style="font-size:90px" class="item item-image">
+                    <i ng-click="submit(i)" class="icon {{i}}"></i>
+                </div>
+            </div>
+        </ion-content>
+    </form>
+</div>

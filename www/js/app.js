@@ -42,8 +42,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
       controller: "AccountsCtrl"
     })
 
-
-
     // setup an abstract state for the tabs directive
     .state('tab', {
       url: "/tab",

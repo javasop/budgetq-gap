@@ -123,7 +123,6 @@ angular.module('starter.services')
                     return el.type == "budget";
                 })[0];
 
-
             }
 
             return {
@@ -138,6 +137,8 @@ angular.module('starter.services')
                     model.get("expenses", q).success(function(a) {
                         $rootScope.account = a;
                         $rootScope.expenses = a[0].expenses;
+                        $rootScope.categories = a[0].categories;
+                        //$rootScope.icons = a[0].icons;
                         $rootScope.settings = $rootScope.account[0].settings;
                         filterM();
                         $ionicLoading.hide();
