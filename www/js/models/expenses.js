@@ -54,12 +54,14 @@ angular.module('starter.services')
 
                 var fluc = $rootScope.model.fluctuating;
                 var rec = $rootScope.model.recurring;
+                var inc = $rootScope.model.income;
 
                 $rootScope.model.expTotal = 0;
                 $rootScope.model.flucTotal = 0;
                 $rootScope.model.recTotal = 0;
+                $rootScope.model.inTotal = 0;
 
-                if ((fluc !== undefined || rec !== undefined) && $rootScope.model.budget != undefined) {
+                if ((fluc !== undefined || rec !== undefined) && $rootScope.model.income != undefined) {
 
                     fluc.forEach(function(entry) {
                         if (entry)
@@ -74,8 +76,14 @@ angular.module('starter.services')
 
                     });
 
+                    inc.forEach(function(entry) {
+                        if (entry)
+                        $rootScope.model.inTotal += entry.value;
 
-                    $rootScope.model.amountLeft = $rootScope.model.budget.value - $rootScope.model.expTotal;
+                    });
+
+
+                    $rootScope.model.amountLeft = $rootScope.model.inTotal - $rootScope.model.expTotal;
                     $rootScope.model.perDay = $rootScope.model.amountLeft / $rootScope.daysLeft;
                 }
             }
@@ -119,9 +127,9 @@ angular.module('starter.services')
                     }
                 }
 
-                $rootScope.model.budget = _.filter(a, function(el) {
-                    return el.type == "budget";
-                })[0];
+                $rootScope.model.income = _.filter(a, function(el) {
+                    return el.type == "income";
+                });
 
             }
 

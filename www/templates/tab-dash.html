@@ -87,29 +87,29 @@
         </ion-list>
         <div class="card">
             <div class="item item-divider">
-                Budget
+                Income
             </div>
 
-            <ion-item  class="item-icon-left item-icon-right" 
-                       ng-dblclick="edit(model.budget)">
+            <ion-item ng-repeat="inc in model.income"  class="item-icon-left item-icon-right" 
+                       ng-dblclick="edit(inc)">
 
-                <i class="icon {{model.budget.icon}}"></i>
+                <i class="icon {{inc.icon}}"></i>
 
                 <p  style="float: right">
-                    {{model.budget.value}}
+                    {{inc.value}}
 
 
                 </p>
                 <p style="float: left">
-                    {{ model.budget.name}}
+                    {{ inc.name}}
                 </p>
 
                 <ion-option-button class="button-assertive"
-                                   ng-click="edit(model.budget)">
+                                   ng-click="edit(inc)">
                     Edit
                 </ion-option-button>
 
-                <i ng-click="edit(model.budget)" class="icon ion-ios7-compose"></i>
+                <i ng-click="edit(inc)" class="icon ion-ios7-compose"></i>
 
             </ion-item>
         </div>
