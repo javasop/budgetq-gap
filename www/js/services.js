@@ -52,12 +52,12 @@ angular.module('starter.services', ['ngResource'])
                         count++
  
                     }
-                var url = local + service+ s;
+                var url = heroku + service+ s;
 
                 }
                 else{
                     
-                 var url = local+service;
+                 var url = heroku +service;
                     
                 }
                 return url;
