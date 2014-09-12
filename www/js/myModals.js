@@ -3,34 +3,36 @@
 angular.module('starter.services')
 
         .service('myModals', function($ionicModal, $rootScope, $stateParams, $ionicLoading, $location, $ionicPopup) {
-            
+            var cType = [];
+            var cCall = [];
             this.create = function(scope,type,callback) {
                 
                 $ionicModal.fromTemplateUrl('templates/modals/'+type+'.html', {
                     scope: scope,
                     animation: 'slide-in-up'
-                }).then(function(modal) {
-                    
+                }).then(function(modal) {                   
                     if(scope.modal != undefined){
-                        scope.modal[type] = modal;
+                        scope.modal[type] = modal;                     
                     }
                     else{
                         scope.modal = {};
                         scope.modal[type] = modal;
                     }
-                    
-                    scope.openModal(type);
+                    cType.push(type);
+                    cCall.push(callback);
+                    scope.openModal();
                 });
-                scope.openModal = function(type) {
-                    scope.modal[type].show();
+                scope.openModal = function() {
+                    scope.modal[cType[cType.length - 1]].show();
                 };
-                scope.closeModal = function(type) {
-                    console.log(scope.modal);
-                    scope.modal[type].hide();
+                scope.closeModal = function() {
+                    scope.modal[cType[cType.length - 1]].hide();
+                    cType.pop();
                 };
-                scope.submit = function(object) {
+                scope.submitModal = function(object) {
                     scope.closeModal();
-                    callback(object)
+                    cCall[cCall.length - 1](object);
+                    cCall.pop();
                 }
                 //Cleanup the modal when we're done with it!
                 scope.$on('$destroy', function() {
@@ -46,6 +48,16 @@ angular.module('starter.services')
                 });
                 
 
+            }
+            //future
+            this.open = function(){
+                
+            }
+            this.close = function(){
+                
+            }
+            this.submit = function(object){
+                
             }
 
         });

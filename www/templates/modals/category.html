@@ -6,11 +6,33 @@
     </ion-header-bar>
     <form>
         <ion-content>
-            <div class="list card">
-                <div ng-repeat="i in icons" style="font-size:90px" class="item item-image">
-                    <i ng-click="submit(i)" class="icon {{i}}"></i>
-                </div>
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Search Categories" ng-model="cat">
+                </label>
             </div>
+             <ion-list  show-delete="data.showDelete" canSwipeItems="true">
+            <div class="card">
+                <div class="item item-divider">
+                   Categories
+                </div>
+                <ion-item  class="item-icon-left item-icon-right" ng-click="submitModal(c)" ng-repeat="c in categories | filter:cat" 
+                           item="item">
+
+                    <i class="icon {{c.icon}}"></i>
+                    
+                    <p style="float: left">
+                        {{c.name}}
+                    </p>
+
+                    <ion-delete-button class="ion-minus-circled" 
+                                       ng-click="onItemDelete(i)">
+                    </ion-delete-button>              
+                </ion-item>
+            </div>
+        </ion-list>
+
         </ion-content>
     </form>
 </div>

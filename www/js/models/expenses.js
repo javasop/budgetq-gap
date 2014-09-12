@@ -138,7 +138,7 @@ angular.module('starter.services')
                         $rootScope.account = a;
                         $rootScope.expenses = a[0].expenses;
                         $rootScope.categories = a[0].categories;
-                        //$rootScope.icons = a[0].icons;
+                        $rootScope.icons = a[0].icons;
                         $rootScope.settings = $rootScope.account[0].settings;
                         filterM();
                         $ionicLoading.hide();

@@ -15,22 +15,23 @@
                 </label>
                 <label class="item-input item-select">
                     <div class="input-label">
-                        select an icon
+                        Select a Category
                     </div>
-                    <button ng-click="openIcons()" class="button button-block button-dark"><i class=
-                                                                                                   "icon {{item.icon}}"></i></button>
+                    <button ng-click="openIcons()" class="button button-block button-dark">                      
+                        <i class="icon {{item.icon}}"></i> {{item.category}}
+                    </button>
                 </label>
                 </label>
                 <label class="item-input item-select">
                     <div class="input-label">
-                        select a type 
+                        Select a Type 
                     </div>
                     <select ng-model="item.type">
                         <option value="recurring">Recurring</option>
                         <option value="fluctuating">Fluctuating</option>
                     </select>
                 </label>
-                <button ng-click="submit(item)" type="submit" class="button button-block button-dark">Submit</button>
+                <button ng-click="submitModal(item)" type="submit" class="button button-block button-dark">Submit</button>
             </div>
         </ion-content>
     </form>

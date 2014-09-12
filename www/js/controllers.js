@@ -78,7 +78,7 @@ angular.module('starter.controllers', [])
                     $scope.insert = false;
                     $rootScope.item = item;
                 }
-                myModals.create($rootScope,"item",function(item){               
+                myModals.create($rootScope,"item",function(item){  
                     $scope.sync(item);
                 });
                 
@@ -94,13 +94,14 @@ angular.module('starter.controllers', [])
         .controller('itemModalCtrl', function($rootScope,myModals,$scope) {         
             //open icons modal
             $scope.openIcons = function(){
-                myModals.create($rootScope,"category",function(icon){
-                    $rootScope.item.icon = icon;
+                myModals.create($rootScope,"category",function(category){
+                    $rootScope.item.icon = category.icon;
+                    $rootScope.item.category = category.name;
                 })
             }
+
         })
-        .controller('categoryModalCtrl', function($rootScope,myModals) {
-            
+        .controller('categoryModalCtrl', function($rootScope,myModals,expenses) {  
             
         })
 
