@@ -9,7 +9,7 @@
             <div class="list list-inset">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Search Categories" ng-model="cat">
+                    <input type="text" placeholder="Search Categories Or add One" ng-model="cat">
                 </label>
             </div>
              <ion-list  show-delete="data.showDelete" canSwipeItems="true">
@@ -17,7 +17,7 @@
                 <div class="item item-divider">
                    Categories
                 </div>
-                <ion-item  class="item-icon-left item-icon-right" ng-click="submitModal(c)" ng-repeat="c in categories | filter:cat" 
+                <ion-item  class="item-icon-left item-icon-right" ng-click="submitModal(c)" ng-repeat="c in categories | filter:cat | catf:cat" 
                            item="item">
 
                     <i class="icon {{c.icon}}"></i>
