@@ -9,29 +9,41 @@
             <div class="list list-inset">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Search Categories Or add One" ng-model="cat">
+                    <input type="text" placeholder="Search Categories" ng-model="cat">
+                    <!-- add a category -->
+                    <i class="icon ion-plus col" style="font-size:30px"></i>
                 </label>
             </div>
-             <ion-list  show-delete="data.showDelete" canSwipeItems="true">
-            <div class="card">
-                <div class="item item-divider">
-                   Categories
-                </div>
-                <ion-item  class="item-icon-left item-icon-right" ng-click="submitModal(c)" ng-repeat="c in categories | filter:cat | catf:cat" 
-                           item="item">
+            <ion-list  show-delete="data.showDelete" canSwipeItems="true">
 
-                    <i class="icon {{c.icon}}"></i>
-                    
-                    <p style="float: left">
-                        {{c.name}}
-                    </p>
-
-                    <ion-delete-button class="ion-minus-circled" 
-                                       ng-click="onItemDelete(i)">
-                    </ion-delete-button>              
-                </ion-item>
+                <div class="card">
+                    <div class="item item-divider">
+                        Categories
+                    </div>
+                                    <ion-item ng-hide="hide"  class="item-icon-left item-icon-right" item="item">          
+                        <!-- offer to add a new category -->
+                                    <div class="list list-inset">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Add Category" ng-model="categroyn">
+                </label>
             </div>
-        </ion-list>
+                    </ion-item>
+                    <ion-item  class="item-icon-left item-icon-right" ng-click="submitModal(c)" ng-repeat="c in categories| filter:cat" 
+                               item="item">
+
+                        <i class="icon {{c.icon}}"></i>
+
+                        <p style="float: left">
+                            {{c.name}}
+                        </p>
+
+                        <ion-delete-button class="ion-minus-circled" 
+                                           ng-click="onItemDelete(i)">
+                        </ion-delete-button>              
+                    </ion-item>
+                </div>
+            </ion-list>
 
         </ion-content>
     </form>

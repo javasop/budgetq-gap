@@ -101,7 +101,9 @@ angular.module('starter.controllers', [])
             }
 
         })
-        .controller('categoryModalCtrl', function($rootScope,myModals,expenses) {  
+        .controller('categoryModalCtrl', function($scope,$rootScope,myModals,expenses) {  
+            
+            $scope.hide = true;
             
         })
 
