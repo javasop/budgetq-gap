@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
             //check if the user is logged in, we redirect whenever we need to reauthenticate
             auth[$stateParams.status]();
             
-                       
+            
 	    $scope.model = {};
             $scope.model.username = "";
             $scope.model.password = "";
