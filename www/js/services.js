@@ -1,5 +1,5 @@
 var local = "http://localhost:5000/";
-var heroku = "http://budgetq.localapp.com/";
+var heroku = "http://budgetq.herokuapp.com/";
 angular.module('starter.services', ['ngResource'])
 
         /**
