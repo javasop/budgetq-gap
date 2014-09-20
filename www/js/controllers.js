@@ -1,11 +1,18 @@
 angular.module('starter.controllers', [])
 
-        .controller('LoginCtrl', function($scope, $rootScope, $ionicLoading, $location, $timeout,auth) {
+        .controller('AuthCtrl', function($scope, $rootScope,$ionicLoading,$stateParams, $location, $timeout,auth) {
+            
+            
+            //check if the user is logged in, we redirect whenever we need to reauthenticate
+            auth[$stateParams.status]();
+            
+            
             
 	    $scope.model = {};
             $scope.model.username = "";
             $scope.model.password = "";
-
+            
+            //check to see if the user accounts are stored in localstorage or not           
             $scope.submit = function() {
 		auth.login($scope.model.username,$scope.model.password);
             }
@@ -87,8 +94,10 @@ angular.module('starter.controllers', [])
 
 
         })
-        .controller('SettingsCtrl', function($rootScope) {
-
+        .controller('AccountCtrl', function($rootScope,localStorageService,$scope) {
+            
+            $scope.username = localStorageService.get('username');
+   
 
         })
         .controller('itemModalCtrl', function($rootScope,myModals,$scope) {         

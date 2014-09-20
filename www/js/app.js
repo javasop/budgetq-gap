@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','starter.directives','starter.filters'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','starter.directives','starter.filters','LocalStorageModule'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -15,7 +15,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
     }
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
-                       console.log("not hidden");
       StatusBar.hide();
     }
   });
@@ -30,10 +29,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
   $stateProvider
 
     //login page leading --> accounts
-     .state('login', {
-      url: "/login",
-      templateUrl: "templates/login.html",
-      controller: "LoginCtrl"
+     .state('auth', {
+      url: "/auth/:status",
+      templateUrl: "templates/auth.html",
+      controller: "AuthCtrl"
     })
 
     .state('accounts', {
@@ -72,6 +71,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/auth/check');
 
 })

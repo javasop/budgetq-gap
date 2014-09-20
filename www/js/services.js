@@ -1,5 +1,5 @@
 var local = "http://localhost:5000/";
-var heroku = "http://budgetq.herokuapp.com/";
+var heroku = "http://budgetq.localapp.com/";
 angular.module('starter.services', ['ngResource'])
 
         /**
@@ -38,8 +38,9 @@ angular.module('starter.services', ['ngResource'])
                 numberYear: 0,
                 daysLeft: 0,
                 items: []}
+            
 
-
+          
             //implement watchers here to update the values of the calculations?
             //return the url with query strings attached
             function getUrl(service,query) {
@@ -52,12 +53,12 @@ angular.module('starter.services', ['ngResource'])
                         count++
  
                     }
-                var url = heroku + service+ s;
+                var url = local + service+ s;
 
                 }
                 else{
                     
-                 var url = heroku +service;
+                 var url = local +service;
                     
                 }
                 return url;
