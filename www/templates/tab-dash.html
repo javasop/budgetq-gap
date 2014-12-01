@@ -141,8 +141,8 @@
 
     </ion-content>
     <ion-footer-bar style="height:80px" class="bar-stable">
-        <button style="margin-top:35px;margin-bottom:50px" class="button  button-assertive col col-50">Expenses: $ {{model.expTotal}}</button>
-        <button style="margin-top:35px;margin-bottom:50px" class="button  button-balanced col col-50">Available: $ {{model.amountLeft}}</button>
+        <button style="margin-top:35px;margin-bottom:50px" class="button  button-assertive col col-50">Expenses: $ {{model.expTotal|number:1}}</button>
+        <button style="margin-top:35px;margin-bottom:50px" class="button  button-balanced col col-50">Available: $ {{model.amountLeft|number:1}}</button>
         <button style="height:0px;" class="button button-positive col">Daily Allowance: $ {{model.perDay|number:2}}</button>
     </ion-footer-bar>
 
