@@ -42,11 +42,9 @@ angular.module('starter.services')
                 update();
             });
 
-
             function prepareQ() {
 
                 return {month: $rootScope.numberMonth, year: $rootScope.numberYear, id: $stateParams.exp_id}
-
             }
 
             //updates the the statistics ..
@@ -85,6 +83,7 @@ angular.module('starter.services')
 
                     $rootScope.model.amountLeft = $rootScope.model.inTotal - $rootScope.model.expTotal;
                     $rootScope.model.perDay = $rootScope.model.amountLeft / $rootScope.daysLeft;
+		    filterM();
                 }
             }
 
@@ -124,6 +123,13 @@ angular.module('starter.services')
                         });
                         $rootScope.numberMonth = month;
 
+			//sync all the expneses
+                   	 model.post("collections/expenses", $rootScope.model.recurring, q).success(function(a) {
+				console.log("expenses where added since it's the beginning of the month");
+				console.log(a);
+                        	ex = a;
+                    	});
+ 
                     }
                 }
 

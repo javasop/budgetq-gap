@@ -1,3 +1,4 @@
+//TODO: separate local storage into its own module and call it whenever post is called.
 var local = "http://localhost:5000/";
 var heroku = "http://budgetq.herokuapp.com/";
 angular.module('starter.services', ['ngResource'])
